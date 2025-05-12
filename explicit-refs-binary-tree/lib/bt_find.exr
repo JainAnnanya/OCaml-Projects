@@ -1,0 +1,33 @@
+(* Aya Salama, Annanya Jain*)
+(* Find exercise  *)
+
+let n_left = { data <= 12; left <= 0; right <= 0}    (* 0 in head signals null *)
+in let n_right = { data <= 44; left <= 0; right <= 0}
+in let n_root = { data <= 33; left <= n_left ; right <= n_right }
+in let t1 = { root <= n_root ; length <= 3} 
+in let and = proc(x) {
+    proc(y) {
+        if x 
+        then 
+            if y 
+            then zero?(0) 
+            else zero?(1) 
+        else zero?(1) 
+    }
+}
+in let find_bt = proc(t) { 
+    proc(e) {
+       letrec find_helper (h) = 
+            if ((and number?(h.left)) (number?(h.right)))
+            then if h.data=e 
+                 then zero?(0)
+                 else zero?(1)
+            else if h.data=e 
+                 then zero?(0) 
+                 else if h.data>>e 
+                      then (find_helper h.left)
+                      else (find_helper h.right)
+        in (find_helper t.root)
+    }
+}
+in ((find_bt t1) 12)
